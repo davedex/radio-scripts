@@ -4,7 +4,7 @@ if [ $# -ne 0 ]
 then
     search_location="$1"
 else
-    search_location="/storage/bbc/radio/"
+    search_location="/data/radio/"
 fi
 echo "Searching $search_location for files to add covers"
 
@@ -16,7 +16,7 @@ do
         echo "$file"
         AtomicParsley "$file" -t | grep 'covr'
         if [ $? != 0 ]
-        then 
+        then
             echo -e "\tAdding cover"
             AtomicParsley "$file" --artwork "$image" --overWrite
         fi
